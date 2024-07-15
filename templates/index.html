@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeForShe Try On</title>
+    <style>
+        .sunglasses-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .sunglasses-container img {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+        .sunglasses-container img:hover {
+            border: 2px solid #000;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Sunglasses and Try Them On!</h1>
+    <div class="sunglasses-container">
+        <img src="{{ url_for('static', filename='images/sunglasses.png') }}" alt="Sunglasses 1" onclick="selectSunglasses('sunglasses1')">
+        <img src="{{ url_for('static', filename='images/sunglasses2.png') }}" alt="Sunglasses 2" onclick="selectSunglasses('sunglasses2')">
+    </div>
+    <div class="video-container">
+        <img id="video-feed" src="/basic_feed" alt="Video Feed">
+    </div>
+    <script>
+        function selectSunglasses(sunglasses) {
+            console.log(`Selected sunglasses: ${sunglasses}`);
+            document.getElementById('video-feed').src = `/video_feed/${sunglasses}`;
+        }
+    </script>
+</body>
+</html>
